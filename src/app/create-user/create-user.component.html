@@ -1,0 +1,11 @@
+<h1>User Creation</h1>
+<form onSubmit="return getCreds()">
+    Username: <input type="text" id="username" name="username"><br>
+    Password: <input type="text" id="password" name="password"><br>
+    <input type="Submit" value="Submit">
+</form>
+<script>
+    function getCreds(){
+        {{ postCreds(document.getElementById("username"), document.getElementById("password"))}}
+    }
+</script>

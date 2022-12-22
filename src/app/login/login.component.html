@@ -1,0 +1,8 @@
+<h1>{{ title }}</h1>
+<form action="localhost:3000/login" method="post">
+    Username: <input type="text" id="username" name="username"><br>
+    Password: <input type="text" id="password" name="password"><br>
+    <input type="submit" value="Submit">
+</form>
+<a routerLink="/create-user">Create New User</a>
+<router-outlet></router-outlet>
