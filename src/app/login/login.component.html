@@ -1,7 +1,6 @@
-<h1>{{ title }}</h1>
-<form action="localhost:3000/login" method="post">
-    Username: <input type="text" id="username" name="username"><br>
-    Password: <input type="text" id="password" name="password"><br>
+<form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+    Username: <input type="text" id="username" name="username" ngModel><br>
+    Password: <input type="text" id="password" name="password" ngModel><br>
     <input type="submit" value="Submit">
 </form>
 <a routerLink="/create-user">Create New User</a>

@@ -1,0 +1,22 @@
+<p>{{message}}</p>
+<form #personForm="ngForm" *ngIf="personName == null" (ngSubmit)="onCreatePerson(personForm.value)">
+    <h1>Availability</h1>
+    <p>Enter your start and end time availabilities for each day, on a 24 hour scale.</p>
+    Monday: <input type="number" name="mon_start" max="24" min="1" ngModel> - <input type="number" name="mon_end" max="24" min="1" ngModel><br>
+    Tuesday: <input type="number" name="tue_start" max="24" min="1" ngModel> - <input type="number" name="tue_end" max="24" min="1" ngModel><br>
+    Wednesday: <input type="number" name="wed_start" max="24" min="1" ngModel> - <input type="number" name="wed_end" max="24" min="1" ngModel><br>
+    Thursday: <input type="number" name="thu_start" max="24" min="1" ngModel> - <input type="number" name="thu_end" max="24" min="1" ngModel><br>
+    Friday: <input type="number" name="fri_start" max="24" min="1" ngModel> - <input type="number" name="fri_end" max="24" min="1" ngModel><br>
+    Saturday: <input type="number" name="sat_start" max="24" min="1" ngModel> - <input type="number" name="sat_end" max="24" min="1" ngModel><br>
+    Sunday: <input type="number" name="sun_start" max="24" min="1" ngModel> - <input type="number" name="sun_end" max="24" min="1" ngModel><br>
+    Desired hours per week: <input type="number" name="hours" max="80" min="4" ngModel><br>
+    <br>
+    <h1>Personal Info</h1>
+    Name: <input type="text" name="name" ngModel><br>
+    Select Your Role: 
+    <select name="role" ngModel>
+        <option *ngFor="let r of roles" value="{{r}}">{{r}}</option>
+    </select><br>
+    <input type="submit">
+</form>
+
