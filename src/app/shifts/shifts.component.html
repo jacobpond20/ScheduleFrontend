@@ -1,0 +1,58 @@
+<app-navbar [shifts]="'active'"></app-navbar>
+
+<body class="body">
+    <h1 class="headerTitle">Shifts</h1>
+    <table class="table">
+        <tr class="tableRow"><td class="tableCell">Shift Name</td><td class="tableCell">Shift Role</td><td class="tableCell">Shift Time</td><td class="tableCell">Hours</td><td class="tableCell">Days</td></tr>
+        <ng-container *ngFor="let s of shifts">
+            <tr class="tableRow"><td class="tableCell">{{s.name}}</td><td class="tableCell">{{s.role}}</td><td class="tableCell">{{s.start}} - {{s.end}}</td><td class="tableCell">{{s.hours}}</td><td class="tableCell">
+                                                                                        <p *ngIf="s.mon == true">Monday</p>
+                                                                                        <p *ngIf="s.tue == true">Tuesday</p>
+                                                                                        <p *ngIf="s.wed == true">Wednesday</p>
+                                                                                        <p *ngIf="s.thu == true">Thursday</p>
+                                                                                        <p *ngIf="s.fri == true">Friday</p>
+                                                                                        <p *ngIf="s.sat == true">Saturday</p>
+                                                                                        <p *ngIf="s.sun == true">Sunday</p>
+                                                                                    </td></tr>
+        </ng-container>
+    </table>
+    <p style="color:red;">{{message}}</p>
+    <form #switchRoleForm="ngForm" (ngSubmit)="onDisplayRole()" *ngIf="createRole == false" class="createRoleButton">
+        <input type="submit" value="Create New Role">
+    </form>
+    <div *ngIf="createRole == true" class="createRole">
+        <form #createRoleForm="ngForm" (ngSubmit)="onCreateRole(createRoleForm.value)">
+            <label for="role">Role Name: </label>
+            <input type="text" id="role" name="role" ngModel><br>
+            <input type="checkbox" id="admin" name="admin" ngModel>
+            <label for="admin">Admin Priveleges</label><br>
+            <input type="submit" value="Submit">
+        </form>
+        <form #cancelForm="ngForm" (ngSubmit)="onDisplayRole()">
+            <input type="submit" value="Cancel">
+        </form>
+    </div>
+    <p class="message">{{roleCreatedMessage}}</p>
+    <form #switchShiftForm="ngForm" (ngSubmit)="switchShift()" *ngIf="createShift==false" class="createRoleButton">
+        <input type="submit" value="Create New Shift">
+    </form>
+    <div class="createRole" *ngIf="createShift == true">
+        <form #createShiftForm="ngForm" (ngSubmit)="onCreateShift(createShiftForm.value)">
+            Shift Name: <input type="text" name="shiftName" ngModel><br>
+            Shift Role: <select name="shiftRole" ngModel>
+                <option *ngFor="let r of roles" value="{{r[0]}}" [ngModel]="r[0]">{{r[0]}}</option>
+            </select><br>
+            Shift Start Time: <input type="number" name="startTime" ngModel><br>
+            Shift End Time: <input type="number" name="endTime" ngModel><br>
+            Days: <select name="days" multiple ngModel>
+                <option *ngFor="let day of dayOptions" value="{{day}}">{{day}}</option>
+            </select><br>
+            <input type="submit">
+        </form>
+        <form #cancelCreateShiftForm="ngForm" (ngSubmit)="switchShift()">
+            <input type="submit" value="cancel">
+        </form>
+    </div>
+</body>
+
+

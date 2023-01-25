@@ -15,16 +15,17 @@ export class LoginComponent {
 
 
   onLogin(user: {username: string, password: string}){
+    console.log(user);
     let res = this.apiService.login(user);
     res.subscribe((data) => {
-      if(data == null){
+      if(data == "OK"){
         console.log("Working");
         if(localStorage.getItem('userData') != user.username){
           localStorage.setItem('userData', user.username);
         }
         this.router.navigate(['/home']);
       }else{
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
       }
     });
   }

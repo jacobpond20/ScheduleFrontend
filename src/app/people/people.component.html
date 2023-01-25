@@ -1,0 +1,14 @@
+<app-navbar [people]="'active'"></app-navbar>
+
+<div class="container-fluid">
+    <div class="" *ngFor="let p of people">
+        <table class="table table-bordered">
+            <thead>
+                <tr><th>Name</th><th>Role</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>{{p.name}}</td><td>{{p.role}}</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

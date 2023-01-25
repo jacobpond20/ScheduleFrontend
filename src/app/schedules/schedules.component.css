@@ -1,0 +1,61 @@
+
+.outer{
+    display: flex;
+    flex-direction:column;
+    min-height:98vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dayLabel {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    border: 1px solid;
+}
+
+.timeLabel {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    border: 1px solid;
+}
+
+.shift {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    border: 1px solid;
+}
+
+.generateForm{
+    flex:1;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.col-md-4{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.col-md-8{
+    background-color: rebeccapurple;
+}
+
+.row {
+    margin-top:5%;
+    margin-bottom:5%;
+}

@@ -1,0 +1,56 @@
+.body{
+    display:flexbox;
+}
+
+.headerTitle{
+    text-align: center;
+}
+
+.table{
+    position: relative;
+    left: 10%;
+    display:flexbox;
+    flex-direction: column;
+    border:3px solid;
+    border-color:black;
+    width:80%;
+}
+
+.tableCell{
+    background-color:aliceblue;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+.tableRow{
+
+}
+
+.createRoleButton{
+    display:flex;
+    justify-content: center;
+    padding-top:2%;
+}
+
+.createRole{
+    padding-top:2%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.link{
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    font:24px bold;
+    text-decoration:none;
+    padding-top:2%;
+}
+
+.message{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

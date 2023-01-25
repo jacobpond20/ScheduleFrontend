@@ -1,22 +1,257 @@
-<p>{{message}}</p>
-<form #personForm="ngForm" *ngIf="personName == null" (ngSubmit)="onCreatePerson(personForm.value)">
-    <h1>Availability</h1>
-    <p>Enter your start and end time availabilities for each day, on a 24 hour scale.</p>
-    Monday: <input type="number" name="mon_start" max="24" min="1" ngModel> - <input type="number" name="mon_end" max="24" min="1" ngModel><br>
-    Tuesday: <input type="number" name="tue_start" max="24" min="1" ngModel> - <input type="number" name="tue_end" max="24" min="1" ngModel><br>
-    Wednesday: <input type="number" name="wed_start" max="24" min="1" ngModel> - <input type="number" name="wed_end" max="24" min="1" ngModel><br>
-    Thursday: <input type="number" name="thu_start" max="24" min="1" ngModel> - <input type="number" name="thu_end" max="24" min="1" ngModel><br>
-    Friday: <input type="number" name="fri_start" max="24" min="1" ngModel> - <input type="number" name="fri_end" max="24" min="1" ngModel><br>
-    Saturday: <input type="number" name="sat_start" max="24" min="1" ngModel> - <input type="number" name="sat_end" max="24" min="1" ngModel><br>
-    Sunday: <input type="number" name="sun_start" max="24" min="1" ngModel> - <input type="number" name="sun_end" max="24" min="1" ngModel><br>
-    Desired hours per week: <input type="number" name="hours" max="80" min="4" ngModel><br>
-    <br>
-    <h1>Personal Info</h1>
-    Name: <input type="text" name="name" ngModel><br>
-    Select Your Role: 
-    <select name="role" ngModel>
-        <option *ngFor="let r of roles" value="{{r}}">{{r}}</option>
-    </select><br>
-    <input type="submit">
-</form>
+<app-navbar [home]="'active'"></app-navbar>
+<div class="container-fluid">
+    <div class="row" *ngIf="newPerson == true">
+        <h1 class="display-2">
+            Availability
+        </h1>
+        <p class="lead">Enter your start and end time availabilities for each day, on a 24 hour scale.</p>
+    </div>
+    <form #personForm="ngForm" *ngIf="newPerson == true" (ngSubmit)="onCreatePerson(personForm.value)">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <h2>Monday</h2>
+                    <h4>Start</h4>
+                    <select class="col-xs-3 form-select" name="mon_start_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="mon_start_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="mon_start_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                    <h4>End</h4>
+                    <select class="col-xs-3 form-select" name="mon_end_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="mon_end_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="mon_end_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h2>Tuesday</h2>
+                    <h4>Start</h4>
+                    <select class="col-xs-3 form-select" name="tue_start_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="tue_start_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="tue_start_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                    <h4>End</h4>
+                    <select class="col-xs-3 form-select" name="tue_end_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="tue_end_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="tue_end_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h2>Wednesday</h2>
+                    <h4>Start</h4>
+                    <select class="col-xs-3 form-select" name="wed_start_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="wed_start_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="wed_start_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                    <h4>End</h4>
+                    <select class="col-xs-3 form-select" name="wed_end_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="wed_end_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="wed_end_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <h2>Thursday</h2>
+                    <h4>Start</h4>
+                    <select class="col-xs-3 form-select" name="thu_start_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="thu_start_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="thu_start_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                    <h4>End</h4>
+                    <select class="col-xs-3 form-select" name="thu_end_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="thu_end_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="thu_end_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h2>Friday</h2>
+                    <h4>Start</h4>
+                    <select class="col-xs-3 form-select" name="fri_start_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="fri_start_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="fri_start_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                    <h4>End</h4>
+                    <select class="col-xs-3 form-select" name="fri_end_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="fri_end_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="fri_end_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h2>Saturday</h2>
+                    <h4>Start</h4>
+                    <select class="col-xs-3 form-select" name="sat_start_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="sat_start_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="sat_start_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                    <h4>End</h4>
+                    <select class="col-xs-3 form-select" name="sat_end_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="sat_end_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="sat_end_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <h2>Sunday</h2>
+                    <h4>Start</h4>
+                    <select class="col-xs-3 form-select" name="sun_start_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="sun_start_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="sun_start_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                    <h4>End</h4>
+                    <select class="col-xs-3 form-select" name="sun_end_hour" ngModel>
+                        <option *ngFor="let h of hours" [value]="h">{{h}}</option>
+                    </select>
+                    <select class="col-xs-3 form-select" name="sun_end_min" ngModel>
+                        <option *ngFor="let m of minutes" [value]="m">{{m}}</option>
+                    </select>
+                    <select class="form-select" name="sun_end_am_pm" ngModel>
+                        <option value="am">AM</option>
+                        <option value="pm">PM</option>
+                    </select>
+                </div>
+                <h1>Personal Info</h1>
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" ngModel><br>
+                <label for="role">Role</label>
+                <select name="role" class="form-select" ngModel>
+                    <option *ngFor="let r of roles" value="{{r[0]}}">{{r[0]}}</option>
+                </select>
+                <div class="form-group">
+                    <label for="hours">Weekly Hours Desired: </label>
+                    <input type="number" class="form-control" name="hours" max="80" style="width:15%;" ngModel>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+        
+    <div class="col-sm-4" *ngIf="newPerson == false">
+        <h1 style="display:flex;">{{personName}}</h1>
+        <h2>Current Availability:</h2>
+        <table class="table table-bordered" *ngIf="editAvail == false">
+            <thead>
+                <tr><th>Day</th><th>Start - End</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Monday</td><td>{{personAvail.avail.mon_start}} - {{personAvail.avail.mon_end}}</td></tr>
+                <tr><td>Tuesday</td><td>{{personAvail.avail.tue_start}} - {{personAvail.avail.tue_end}}</td></tr>
+                <tr><td>Wednesday</td><td>{{personAvail.avail.wed_start}} - {{personAvail.avail.wed_end}}</td></tr>
+                <tr><td>Thursday</td><td>{{personAvail.avail.thu_start}} - {{personAvail.avail.thu_end}}</td></tr>
+                <tr><td>Friday</td><td>{{personAvail.avail.fri_start}} - {{personAvail.avail.fri_end}}</td></tr>
+                <tr><td>Saturday</td><td>{{personAvail.avail.sat_start}} - {{personAvail.avail.sat_end}}</td></tr>
+                <tr><td>Sunday</td><td>{{personAvail.avail.sun_start}} - {{personAvail.avail.sun_end}}</td></tr>
+                <tr><td>Hours Per Week</td><td>{{personHours}}</td></tr>
+            </tbody>
+            
+        </table>
+        <form #updateAvailForm="ngForm" (ngSubmit)="onUpdateAvail()">
+            <input type="submit" value="Edit">
+        </form>
+        <div class="display" *ngIf="editAvail == true">
+            <form #updateAvailForm="ngForm" (ngSubmit)="onSaveAvail(updateAvailForm.value)">
+                <table class="table">
+                        <tr><td>Day</td><td>Start - End</td></tr>
+                        <tr><td>Monday</td><td><input type="number" name="mon_start" [ngModel]="personAvail.avail.mon_start"> - <input type="number" name="mon_end" [ngModel]="personAvail.avail.mon_end"></td></tr>
+                        <tr><td>Tuesday</td><td><input type="number" name="tue_start" [ngModel]="personAvail.avail.tue_start"> - <input type="number" name="tue_end" [ngModel]="personAvail.avail.tue_end"></td></tr>
+                        <tr><td>Wednesday</td><td><input type="number" name="wed_start" [ngModel]="personAvail.avail.wed_start"> - <input type="number" name="wed_end" [ngModel]="personAvail.avail.wed_end"></td></tr>
+                        <tr><td>Thursday</td><td><input type="number" name="thu_start" [ngModel]="personAvail.avail.thu_start"> - <input type="number" name="thu_end" [ngModel]="personAvail.avail.thu_end"></td></tr>
+                        <tr><td>Friday</td><td><input type="number" name="fri_start" [ngModel]="personAvail.avail.fri_start"> - <input type="number" name="fri_end" [ngModel]="personAvail.avail.fri_end"></td></tr>
+                        <tr><td>Saturday</td><td><input type="number" name="sat_start" [ngModel]="personAvail.avail.sat_start"> - <input type="number" name="sat_end" [ngModel]="personAvail.avail.sat_end"></td></tr>
+                        <tr><td>Sunday</td><td><input type="number" name="sun_start" [ngModel]="personAvail.avail.sun_start"> - <input type="number" name="sun_end" [ngModel]="personAvail.avail.sun_end"></td></tr>
+                        <tr><td>Hours Per Week</td><td>{{personHours}}</td></tr>
+                        <input type="submit" value="Save">
+                </table>
+            </form>
+            <form #updateAvailForm="ngForm" (ngSubmit)="onUpdateAvail()">
+                <input type="submit" value="Cancel">
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-8" >
+        <app-schedules [homeView]="true" *ngIf="newPerson==false"></app-schedules>
+    </div>
+</div>
+
 

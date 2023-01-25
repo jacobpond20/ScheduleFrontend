@@ -9,13 +9,23 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { APIService } from './Service/API.service';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { ShiftsComponent } from './shifts/shifts.component';
+import { PeopleComponent } from './people/people.component';
+import { SchedulesComponent } from './schedules/schedules.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SchedulePageComponent } from './schedule-page/schedule-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CreateUserComponent,
-    HomeComponent
+    HomeComponent,
+    ShiftsComponent,
+    PeopleComponent,
+    SchedulesComponent,
+    NavbarComponent,
+    SchedulePageComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +33,9 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [APIService],
+  providers: [
+    APIService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

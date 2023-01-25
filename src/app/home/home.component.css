@@ -1,0 +1,26 @@
+.form-select {
+    font-size: 16px;
+    width:5%;
+}
+
+.table {
+    border-color:black;
+}
+
+.table>td {
+    border:1px solid black;
+}
+
+
+.col {
+    display:flex;
+    flex-direction:column;
+}
+
+.form-select{
+    width:15%;
+}
+
+.btn{
+    margin-top:3.3%;
+}
