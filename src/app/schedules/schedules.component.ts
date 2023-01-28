@@ -13,6 +13,7 @@ export class SchedulesComponent implements OnInit{
   @Input() homeView: boolean = false;
   message!: string;
   times: string[] = ["12am", "2am", "4am", "6am", "8am", "10am", "12pm", "2pm", "4pm", "6pm", "8pm", "10pm", "12am"];
+  timeIncrement: number = 2;
 
   weeks: any;
   currentWeek: any;
@@ -21,13 +22,26 @@ export class SchedulesComponent implements OnInit{
   people: any;
   avails: any[] = [];
 
-  mon: any[] = [];
-  tue: any[] = [];
-  wed: any[] = [];
-  thu: any[] = [];
-  fri: any[] = [];
-  sat: any[] = [];
-  sun: any[] = [];
+  schedule: any = {
+    timeIncrement: 2,
+    
+  };
+
+  monShifts: any[] = [];
+  tueShifts: any[] = [];
+  wedShifts: any[] = [];
+  thuShifts: any[] = [];
+  friShifts: any[] = [];
+  satShifts: any[] = [];
+  sunShifts: any[] = [];
+
+  monDS: any[] = [];
+  tueDS: any[] = [];
+  wedDS: any[] = [];
+  thuDS: any[] = [];
+  friDS: any[] = [];
+  satDS: any[] = [];
+  sunDS: any[] = [];
   
   constructor(private api: APIService, private router: Router){}
 
@@ -53,25 +67,25 @@ export class SchedulesComponent implements OnInit{
                 for(let ws of this.weeklyShifts){
 
                   if(ws.day == "mon"){
-                    this.mon.push({});
+                    this.monDS.push({});
                   }
                   if(ws.day == "tue"){
-                    this.tue.push(ws);
+                    this.tueDS.push(ws);
                   }
                   if(ws.day == "wed"){
-                    this.wed.push(ws);
+                    this.wedDS.push(ws);
                   }
                   if(ws.day == "thu"){
-                    this.thu.push(ws);
+                    this.thuDS.push(ws);
                   }
                   if(ws.day == "fri"){
-                    this.fri.push(ws);
+                    this.friDS.push(ws);
                   }
                   if(ws.day == "sat"){
-                    this.sat.push(ws);
+                    this.satDS.push(ws);
                   }
                   if(ws.day == "sun"){
-                    this.sun.push(ws);
+                    this.sunDS.push(ws);
                   }
                 }
               });
@@ -80,6 +94,32 @@ export class SchedulesComponent implements OnInit{
             }
           }
         })
+      }
+    });
+    this.api.getShifts().subscribe((data) => {
+      let shifts = data;
+      for(let s of shifts){
+        if(s.day == "mon"){
+          this.monShifts.push({});
+        }
+        if(s.day == "tue"){
+          this.tueShifts.push(s);
+        }
+        if(s.day == "wed"){
+          this.wedShifts.push(s);
+        }
+        if(s.day == "thu"){
+          this.thuShifts.push(s);
+        }
+        if(s.day == "fri"){
+          this.friShifts.push(s);
+        }
+        if(s.day == "sat"){
+          this.satShifts.push(s);
+        }
+        if(s.day == "sun"){
+          this.sunShifts.push(s);
+        }
       }
     });
     
